@@ -10,7 +10,7 @@ class SDK {
 
   constructor() {
     this.spec = Oas.init(definition);
-    this.core = new APICore(this.spec, 'whapi/1.8.7 (api/6.1.2)');
+    this.core = new APICore(this.spec as any, 'whapi/1.8.7 (api/6.1.2)');
   }
 
   /**
@@ -2211,7 +2211,7 @@ class SDK {
 }
 
 const createSDK = (() => { return new SDK(); })()
-;
+  ;
 
 export default createSDK;
 

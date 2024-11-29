@@ -4,13 +4,14 @@ import Oas from 'oas';
 import APICore from 'api/dist/core';
 import definition from './openapi.json';
 
+
 class SDK {
   spec: Oas;
   core: APICore;
 
   constructor() {
-    this.spec = Oas.init(definition);
-    this.core = new APICore(this.spec, 'whapi-partner/0.1.1 (api/6.1.2)');
+    this.spec = Oas.init(definition as any);
+    this.core = new APICore(this.spec as any, 'whapi-partner/0.1.1 (api/6.1.2)');
   }
 
   /**
@@ -199,7 +200,7 @@ class SDK {
    */
   changeChannelMode(body: types.ChangeChannelModeBodyParam, metadata: types.ChangeChannelModeMetadataParam): Promise<FetchResponse<200, types.ChangeChannelModeResponse200>>;
   changeChannelMode(metadata: types.ChangeChannelModeMetadataParam): Promise<FetchResponse<200, types.ChangeChannelModeResponse200>>;
-  
+
   changeChannelMode(body?: types.ChangeChannelModeBodyParam | types.ChangeChannelModeMetadataParam, metadata?: types.ChangeChannelModeMetadataParam): Promise<FetchResponse<200, types.ChangeChannelModeResponse200>> {
     return this.core.fetch('/channels/{ChannelID}/mode', 'patch', body, metadata);
   }
@@ -294,7 +295,7 @@ class SDK {
 }
 
 const createSDK = (() => { return new SDK(); })()
-;
+  ;
 
 export default createSDK;
 
